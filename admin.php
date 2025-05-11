@@ -6,14 +6,20 @@ require_once 'ConexaoBD.php';
 
 $conn = ConexaoBD::getConexao();
 
-$categoria = $_GET['categoria'];
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['categoria'] !== '') {
+    $categoria = $_GET['categoria'];
 
-$sql = $conn->prepare(
-    "SELECT * FROM produtos WHERE categoria_id = ?"
-);
+    $sql = $conn->prepare(
+        "SELECT * FROM produtos WHERE categoria_id = ?"
+    );
 
-$sql->bind_param("i", $categoria);
-$sql->execute();
+    $sql->bind_param("i", $categoria);
+    $sql->execute();
+
+    $resultado = $sql->get_result();
+}
+
+
 
 ?>
 
@@ -45,7 +51,42 @@ $sql->execute();
             </select>
             <button type="submit" class="btn btn-danger">Filtrar</button>
         </form>
+    </div>
+    <div>
+        <table class='table table-bordered table-striped'>
+            <thead class='thead-dark'>
+                <tr>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Foto</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if (isset($resultado)): ?>
+                <?php while ($linha = $resultado->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $linha['nome'] ?></td>
+                        <td><?= $linha['preco'] ?></td>
+                        <td><img src="<?= $linha["imagem"] ?>" alt="<?= $linha["nome"] ?>" width="40"></td>
+                        <td>
+                            <a href='#' class='btn btn-warning btn-sm'>
+                                <i class='fas fa-edit'></i> Editar
+                            </a>
+                            <a href='#' class='btn btn-danger btn-sm'>
+                                <i class='fas fa-trash-alt'></i> Excluir
+                            </a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="4" class="text-center">Nenhuma categoria selecionada.</td>
+                </tr>
+            <?php endif; ?>
 
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
