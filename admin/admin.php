@@ -31,6 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
     <title>Área Administrativa</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .add-row:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -85,6 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
                         </td>
                     </tr>
                 <?php endwhile; ?>
+                <tr class="add-row" onclick="window.location.href='cadastrarProduto.php?categoria=<?= $_GET['categoria'] ?? '' ?>'">
+                    <td colspan="4" class="text-muted text-center">
+                        <i class="bi bi-plus-circle"></i> Adicionar novo produto
+                    </td>
+                </tr>
             <?php else: ?>
                 <tr>
                     <td colspan="4" class="text-center">Nenhuma categoria selecionada.</td>

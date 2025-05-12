@@ -49,7 +49,7 @@ $resultado = $conn->query("SELECT * FROM categorias ORDER BY nome ASC");
                     <?php if ($resultado->num_rows > 0): ?>
                         <?php while ($cat = $resultado->fetch_assoc()): ?>
                             <tr>
-                                <td><?= htmlspecialchars($cat['nome']) ?></td>
+                                <td><?=$cat['nome'] ?></td>
                                 <td>
                                     <a href="editarNomeCategoria.php?id=<?= $cat['id'] ?>" class="btn btn-warning btn-sm">
                                         <i class="bi bi-pencil"></i> Editar
@@ -62,7 +62,6 @@ $resultado = $conn->query("SELECT * FROM categorias ORDER BY nome ASC");
                         <?php endwhile; ?>
                     <?php endif; ?>
 
-                    <!-- Linha de adicionar nova categoria -->
                     <tr class="add-row" onclick="window.location.href='cadastrarCategoria.php'">
                         <td colspan="2" class="text-muted">
                             <i class="bi bi-plus-circle"></i> Adicionar nova categoria
