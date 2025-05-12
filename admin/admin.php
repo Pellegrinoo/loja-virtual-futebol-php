@@ -1,8 +1,8 @@
 <?php 
 
-include 'headers/header_admin.php'; 
+include '../headers/header_admin.php'; 
 
-require_once 'ConexaoBD.php';
+require_once '../ConexaoBD.php';
 
 $conn = ConexaoBD::getConexao();
 
@@ -33,12 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div>
-        <h2 class="text-center mb-4">Gestão dos produtos</h2>
+<div>
+    <h2 class="text-center mb-4">Gestão dos produtos</h2>
 
-        <form action="" method="GET" class="mb-4 text-center">
-            <label for="categoria">Filtrar por categoria:</label>
-            <select name="categoria" id="categoria" class="form-select d-inline w-auto mx-2">
+    <form action="" method="GET" class="mb-4 d-flex justify-content-center align-items-center gap-3 flex-wrap">
+        <div class="d-flex align-items-center gap-2">
+            <label for="categoria" class="mb-0">Filtrar por categoria:</label>
+            <select name="categoria" id="categoria" class="form-select w-auto">
                 <option value="">-- Selecione --</option>
                 <?php
                 $categorias = $conn->query("SELECT * FROM categorias");
@@ -50,8 +51,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
                 <?php endwhile; ?>
             </select>
             <button type="submit" class="btn btn-danger">Filtrar</button>
-        </form>
-    </div>
+        </div>
+        <a href="editarCategorias.php" class="btn btn-warning">
+            <i class="bi bi-plus-circle"></i> Editar Categorias
+        </a>
+    </form>
+</div>
     <div>
         <table class='table table-bordered table-striped'>
             <thead class='thead-dark'>
@@ -67,15 +72,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
                 <?php while ($linha = $resultado->fetch_assoc()): ?>
                     <tr>
                         <td><?= $linha['nome'] ?></td>
-                        <td><?= $linha['preco'] ?></td>
-                        <td><img src="<?= $linha["imagem"] ?>" alt="<?= $linha["nome"] ?>" width="40"></td>
+                        <td>R$<?= $linha['preco'] ?></td>
+                        <td><img src="../<?= $linha["imagem"] ?>" alt="<?= $linha["nome"] ?>" width="40"></td>
                         <td>
                             <a href='#' class='btn btn-warning btn-sm'>
                                 <i class='fas fa-edit'></i> Editar
                             </a>
-                            <a href='#' class='btn btn-danger btn-sm'>
+                            <a href='deletarProduto.php?id=<?= $linha['id'] ?>&categoria=<?= $_GET['categoria'] ?>' class='btn btn-danger btn-sm' onclick="return confirm('Tem certeza que deseja excluir este produto?')">
                                 <i class='fas fa-trash-alt'></i> Excluir
                             </a>
+
                         </td>
                     </tr>
                 <?php endwhile; ?>

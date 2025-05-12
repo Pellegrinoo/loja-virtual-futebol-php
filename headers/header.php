@@ -30,7 +30,7 @@ if (!isset($_SESSION)) {
     <div class="actions">
         <?php if (isset($_SESSION['nome'])): ?>
             <?php if ($_SESSION['nome'] == "Administrador"): ?>
-                <div><a href="admin.php">Área Administrativa</a></div>
+                <div><a href="admin/admin.php">Área Administrativa</a></div>
             <?php endif; ?>
             <div>Olá, <?php echo $_SESSION['nome']; ?> | <a href="logout.php">Sair</a></div>
         <?php else: ?>
