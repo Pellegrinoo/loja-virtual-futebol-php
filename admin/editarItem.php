@@ -5,7 +5,7 @@ require_once '../ConexaoBD.php';
 $conn = ConexaoBD::getConexao();
 $id = $_GET["id"];
 
-$sql = $conn->prepare("SELECT nome, preco, imagem FROM produtos WHERE id = ?");
+$sql = $conn->prepare("SELECT nome, preco, imagem, categoria_id FROM produtos WHERE id = ?");
 $sql->bind_param("i", $id);
 $sql->execute();
 
@@ -15,6 +15,7 @@ if ($row = $resultado->fetch_assoc()) {
     $nomeAtual = $row['nome'];
     $precoAtual = $row['preco'];
     $imagemAtual = $row['imagem'];
+    $id_categoria = $row['categoria_id'];
 }
 ?>
 
@@ -30,10 +31,11 @@ if ($row = $resultado->fetch_assoc()) {
         <h3 class="text-center mb-4">Editar Produto</h3>
         <form action="salvarProduto.php" method="POST" enctype="multipart/form-data" class="mx-auto" style="max-width: 500px;">
             <input type="hidden" name="id" value="<?= $id ?>">
+            <input type="hidden" name="id_categoria" value="<?= $id_categoria ?>">
             
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" name="nome" id="nome" class="form-control" value="<?= htmlspecialchars($nomeAtual) ?>" required>
+                <input type="text" name="nome" id="nome" class="form-control" value="<?= $nomeAtual ?>" required>
             </div>
 
             <div class="mb-3">
@@ -43,7 +45,7 @@ if ($row = $resultado->fetch_assoc()) {
 
             <div class="mb-3">
                 <label class="form-label">Imagem Atual</label><br>
-                <img src="../<?= $imagemAtual ?>" alt="<?= htmlspecialchars($nomeAtual) ?>" width="100">
+                <img src="../<?= $imagemAtual ?>" alt="<?= $nomeAtual ?>" width="100">
             </div>
 
             <div class="mb-3">
