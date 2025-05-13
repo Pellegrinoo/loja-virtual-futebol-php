@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
                         <td>R$<?= $linha['preco'] ?></td>
                         <td><img src="../<?= $linha["imagem"] ?>" alt="<?= $linha["nome"] ?>" width="40"></td>
                         <td>
-                            <a href='#' class='btn btn-warning btn-sm'>
+                            <a href='editarItem.php?id=<?= $linha['id'] ?>' class='btn btn-warning btn-sm'>
                                 <i class='fas fa-edit'></i> Editar
                             </a>
                             <a href='deletarProduto.php?id=<?= $linha['id'] ?>&categoria=<?= $_GET['categoria'] ?>' class='btn btn-danger btn-sm' onclick="return confirm('Tem certeza que deseja excluir este produto?')">

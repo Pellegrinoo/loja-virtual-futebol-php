@@ -44,10 +44,10 @@ if ($id_categoria) {
     <div class="container mt-5">
         <h3 class="text-center mb-4">Editar Categoria</h3>
         <form method="POST" class="mx-auto" style="max-width: 400px;">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($id_categoria) ?>">
+            <input type="hidden" name="id" value="<?= $id_categoria ?>">
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome da Categoria</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="<?= htmlspecialchars($nomeAtual) ?>" required>
+                <input type="text" class="form-control" id="nome" name="nome" value="<?= $nomeAtual ?>" required>
             </div>
             <div class="text-center">
                 <a href="editarCategorias.php" class="btn btn-secondary me-2">Voltar</a>
