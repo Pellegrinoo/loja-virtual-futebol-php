@@ -19,6 +19,7 @@ h2 {
     margin-bottom: 25px;
 }
 
+input[type="text"],
 input[type="email"],
 input[type="password"] {
     width: 100%;
@@ -28,21 +29,6 @@ input[type="password"] {
     border-radius: 5px;
 }
 
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #e60000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #b80000;
-}
 
 .register-link {
     text-align: center;
