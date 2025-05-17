@@ -54,7 +54,7 @@ if ($row = $resultado->fetch_assoc()) {
             </div>
 
             <div class="text-center">
-                <a href="javascript:history.back()" class="btn btn-secondary me-2">Voltar</a>
+                <a href="admin.php?categoria=<?= $id_categoria ?>" class="btn btn-secondary me-2">Voltar</a>
                 <button type="submit" class="btn btn-success">Salvar</button>
             </div>
         </form>
