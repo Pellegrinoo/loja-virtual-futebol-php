@@ -41,6 +41,7 @@
     <meta charset="UTF-8">
     <title>Login - LojaFut</title>
     <link rel="stylesheet" href="style/login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -49,11 +50,16 @@
 <div class="login-container">
     <h2>Entrar na LojaFut</h2>
     <form action="" method="post">
+
         <label>E-mail</label>
         <input type="email" name="email" required>
+        
         <label>Senha</label>
         <input type="password" name="senha" required>
-        <button type="submit">Entrar</button>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-danger">Entrar</button>
+        </div>
     </form>
     <div class="register-link">
         Não tem conta? <a href="cadastro.php">Cadastre-se</a>
