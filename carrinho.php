@@ -51,6 +51,7 @@ if (!empty($carrinho)) {
                         <th>Preço Unitário</th>
                         <th>Quantidade</th>
                         <th>Subtotal</th>
+                        <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,12 +62,13 @@ if (!empty($carrinho)) {
                             <td>R$ <?php echo $produto['preco']; ?></td>
                             <td><?php echo $produto['quantidade']; ?></td>
                             <td>R$ <?php echo $produto['subtotal']; ?></td>
+                            <td><a href="removeItemCarrinho.php?idProduto=<?= $produto['id'] ?>">Excluir</a></A></td>
                         </tr>
                     <?php endforeach; ?>
                     <tr>
                         <td colspan="3" class="text-end total">Total:</td>
                         <td class="total">R$ <?php echo $total; ?></td>
-                    </tr>
+                    </tr>   
                 </tbody>
             </table>
             <form action="finalizar.php" method="post">
