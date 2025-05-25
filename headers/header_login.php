@@ -17,6 +17,6 @@ $categorias = $conn->query("SELECT * FROM categorias");
 </style>
 <div class="top-bar">Trabalho PHP Escobar</div>
 <div class="middle-bar">
-    <a href="index.php"><div class="logo">⚽ LojaFut</div></a>
+    <a href="index.php"><div class="logo">Sport Store</div></a>
     <a href="login.php"><div class="actions"><div>Entrar / Cadastrar</div></div></a>
 </div>

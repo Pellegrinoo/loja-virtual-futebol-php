@@ -35,7 +35,7 @@ if (!empty($carrinho)) {
     <link rel="stylesheet" href="style/carrinho.css">
 </head>
 <body>
-<?php include 'headers/header_login.php'; ?>
+<?php include 'headers/header_carrinho.php'; ?>
 
     <div class="container">
         <h2>Meu Carrinho</h2>

@@ -18,10 +18,10 @@ if (!isset($_SESSION)) {
 </style>
 <div class="top-bar">Trabalho PHP Escobar</div>
 <div class="middle-bar">
-    <a href="../index.php"><div class="logo">Sport Store</div></a>
+    <a href="index.php"><div class="logo">Sport Store</div></a>
     <div class="actions">
         <?php if (isset($_SESSION['nome'])): ?>
-            <div>Olá, <?php echo $_SESSION['nome']; ?> | <a href="../logout.php">Sair</a></div>
+            <div>Olá, <?php echo $_SESSION['nome']; ?> | <a href="logout.php">Sair</a></div>
         <?php else: ?>
             <a href="login.php"><div>Entrar / Cadastrar</div></a>
         <?php endif; ?>

@@ -1,52 +1,53 @@
 <?php
-
 include 'headers/header.php';
 
-if(!isset($_SESSION)) {
+if (!isset($_SESSION)) {
     session_start();
 }
-
-require_once 'ConexaoBD.php';
-$conn = ConexaoBD::getConexao();
-
-$sqlCat = $conn->query("SELECT * FROM categorias");
-
-$sqlItem = $conn->query("SELECT * FROM produtos limit 3");
-
 ?>
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página inicial</title>
+    <title>Loja - Página Inicial</title>
     <link rel="stylesheet" href="style/index.css">
 </head>
 <body>
-    <div class="titulo">
-        <h3>Principais produtos</h3>
-    </div>
-    <div class="container-geral">
-        <?php while ($cat = $sqlCat->fetch_assoc()): ?>
-            <div class="container-categoria">
-                <div class="galeria-cabecalho">
-                    <span><?php echo $cat['nome']; ?></span>
-                    <a href="">Ver mais...</a>
-                </div>
-                <div class="galeria-itens">
-                    <ul>
-                        <?php 
-                        $sqlItem = $conn->query("SELECT * FROM produtos WHERE categoria_id = " . $cat['id'] . " LIMIT 3");
 
-                        while ($item = $sqlItem->fetch_assoc()): ?>
-                            <p> <?php echo $item['nome']; ?> </p>
-                        <?php endwhile; ?>
-                    </ul>
-                </div>
-            </div>
-        <?php endwhile; ?>
+    <div class="container">
+        <h2>Projeto CRUD - Loja Virtual</h2>
+
+        <p>
+            Este sistema foi desenvolvido como trabalho da disciplina de Linguagem de Programação Web. O objetivo principal foi construir uma loja virtual com uma área pública para exibir produtos e uma área administrativa protegida por login.
+        </p>
+
+        <p>
+            O projeto inclui:
+        </p>
+
+        <ul>
+            <li>CRUD completo de categorias e produtos</li>
+            <li>Controle de vendas (simulação de compra)</li>
+            <li>Login com sessão para acessar o painel administrativo</li>
+            <li>Carrinho de compras usando sessão PHP</li>
+        </ul>
+
+        <p>
+            As tecnologias utilizadas foram:
+        </p>
+
+        <ul>
+            <li>PHP (puro)</li>
+            <li>MySQL</li>
+            <li>HTML + CSS</li>
+        </ul>
+
+        <div class="assinatura">
+            Desenvolvido por Lucas Rios e Lucas André<br>
+            Curso de Sistema de Informação – ITE Bauru
+        </div>
     </div>
+
 </body>
 </html>

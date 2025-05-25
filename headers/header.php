@@ -26,7 +26,7 @@ if (!isset($_SESSION)) {
 </style>
 <div class="top-bar">Trabalho PHP Escobar</div>
 <div class="middle-bar">
-    <a href="index.php"><div class="logo">⚽ LojaFut</div></a>
+    <a href="index.php"><div class="logo">Sport Store</div></a>
     <input type="text" placeholder="O que você procura?">
     
     <a href="carrinho.php" class="carrinho" title="Carrinho" style="display:inline-block; width:36px; height:36px;">
