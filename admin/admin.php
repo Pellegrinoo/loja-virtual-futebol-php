@@ -62,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['categoria']) && $_GET['
         <a href="editarCategorias.php" class="btn btn-warning">
             <i class="bi bi-plus-circle"></i> Editar Categorias
         </a>
+        <a href="relatorioVendas.php" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Relatório de vendas
+        </a>
     </form>
 </div>
     <div>
